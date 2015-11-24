@@ -33,7 +33,14 @@ public class MoneyTest {
         m2 = new Money(14, "USD");
         expected = new Money(26, "USD");
         result = m1.add(m2);
-        Assert.assertEquals("Error", expected.getValue(), m1.getValue());
+        Assert.assertEquals("Error", expected.getValue(), result.getValue());
         Assert.assertNotNull(new Money(10, "USD"));
+    }
+
+    @Test(expected =  Exception.class)
+    public void testDiv() throws Exception {
+        m1 = new Money(12, "USD");
+        m2 = new Money(0, "USD");
+        result = m1.div(m2);
     }
 }

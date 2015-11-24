@@ -1,6 +1,31 @@
 <resources>
     <string name="app_name">Study</string>
+    <string name="directory_on_sd">Study</string>
+    <string name="download_txt">Загрузка данных ... для ветки 1</string>
+    <string name="error_sdcard_no_available">Недоступна SD-карта. Каталог не будет обновлён!</string>
+    <string name="error_no_internet">Недоступно интернет-соединение</string>
+    <string name="error_update_not_available">Приложению необходимо обновление. Пожалуйста, включите интернет-соединение и проверьте работу карты памяти.</string>
+    <string name="error_unzip">Произошла ошибка при разархивировании данных. Каталог не будет обновлён!</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="db_name">bookShop</string>
+    <string name="db_path">/data/data/julie.study.app/databases/</string>
+    <string name="db_mode">develop</string> <!-- работа с тестовой БД = test -->
+  <!--  <string name="db_mode">develop</string>  db adapter for development -> работа с боевой БД  -->
+
+    <string name="db_error_message">В приложении произошла ошибка при обращении к базе данных!</string>
+    <string name="error_message">В приложении произошла ошибка!</string>
+    <string name="no_section_message">В каталоге разделов не существует</string>
+    <string name="title_activity_section_item">SectionItemActivity</string>
+
+    <string name="drawer_open">открывается меню</string>
+    <string name="drawer_close">закрывается меню</string>
+
+    <string name="txt_publish">Издательство:</string>
+    <string name="txt_year_publish">Год издания:</string>
+    <string name="txt_pages">Страниц:</string>
+    <string name="data_loading">Загрузка данных</string>
+
+    <string name="currency">руб.</string>
+
 </resources>
+
