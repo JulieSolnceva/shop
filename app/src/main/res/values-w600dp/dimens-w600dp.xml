@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<dimen name="window_padding">20dp</dimen>
+<dimen name="listSections_Margin">20dp</dimen>
+<dimen name="leftMenu_Width">350dp</dimen>
+<dimen name="goodFrame_padding">10dp</dimen>
+<dimen name="goodFrame_marginBottom">30dp</dimen>
+<dimen name="cart_margin">20dp</dimen>
+</resources>

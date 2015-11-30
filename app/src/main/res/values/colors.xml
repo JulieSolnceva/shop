@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="window_background">#e8e4d8</color>
+    <color name="action_bar_background">#075e54</color>
+    <color name="action_bar_text">#ffffff</color>
+    <color name="section_background">#d4eaf4</color>
+
+    <color name="drawerListBackground">#dadad1</color>
+
+</resources>
