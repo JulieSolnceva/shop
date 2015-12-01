@@ -10,6 +10,8 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import julie.study.DBClasses.DB;
+
 @RunWith(MockitoJUnitRunner.class)
 public class DBTest  {
 

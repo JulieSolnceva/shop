@@ -1,16 +1,13 @@
 package julie.study.Loaders;
 
-        import java.util.ArrayList;
         import android.content.AsyncTaskLoader;
         import android.content.Context;
         import android.os.Bundle;
         import android.util.Log;
 
-        import julie.study.Good;
-        import julie.study.GoodDB;
-        import julie.study.R;
-        import julie.study.Section;
-        import julie.study.SectionDB;
+        import julie.study.DataClasses.Good;
+        import julie.study.DBClasses.GoodDB;
+        import julie.study.DataClasses.Section;
 
 public class GoodLoader extends AsyncTaskLoader<Good> {
 
@@ -33,7 +30,7 @@ public class GoodLoader extends AsyncTaskLoader<Good> {
         Section section=new Section();
         try {
             GoodDB goodDB =new GoodDB(context);
-            goodDB.getDBConnect();
+            //goodDB.getDBConnect();
             goodDB.id=id;
             good=goodDB.getGood();
             goodDB.closeDBConnect();

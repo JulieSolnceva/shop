@@ -37,14 +37,9 @@
                         <TextView
                             android:id="@+id/author"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                        <ImageView
-                            android:id="@+id/ic_author"
-                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/cart_margin"
-                            android:src="@drawable/ic_action_about"/>
-                    </LinearLayout>
+                            style="t"/>
+                      </LinearLayout>
                 </LinearLayout>
 
             <LinearLayout
@@ -102,7 +97,7 @@
                 </LinearLayout>
 
                  <LinearLayout
-                    android:id="@+id/str_year_publish"
+                    android:id="@+id/str_publish_year"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -110,10 +105,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/txt_year_publish"
+                        android:text="@string/txt_publish_year"
                         android:textStyle="bold"/>
                     <TextView
-                        android:id="@+id/year_publish"
+                        android:id="@+id/publish_year"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/window_padding"/>

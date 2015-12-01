@@ -3,7 +3,9 @@ package julie.study;
 import android.test.AndroidTestCase;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+
+import julie.study.DBClasses.SectionDB;
+import julie.study.DataClasses.Section;
 
 public class SectionDBTest extends AndroidTestCase {
     public SectionDB sectionDB;
@@ -12,8 +14,6 @@ public class SectionDBTest extends AndroidTestCase {
         super.setUp();
         sectionDB =new SectionDB(getContext());
     }
-
-
 
 
     public void testInit() {

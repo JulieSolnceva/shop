@@ -3,7 +3,9 @@ package julie.study;
 import android.test.AndroidTestCase;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+
+import julie.study.DBClasses.GoodDB;
+import julie.study.DataClasses.Good;
 
 public class GoodDBTest extends AndroidTestCase {
     GoodDB goodDB;
@@ -16,7 +18,7 @@ public class GoodDBTest extends AndroidTestCase {
 
 
     public void testGetSectionGoods() {
-        goodDB.id_section=3;
+        goodDB.section_id=3;
         ArrayList<Good> goods= goodDB.getSectionGoods();
         assertEquals(3, goods.size());
 
@@ -31,7 +33,7 @@ public class GoodDBTest extends AndroidTestCase {
     }
 
     public void testGetSectionGoodsNOGoods() {
-        goodDB.id_section=1;
+        goodDB.section_id=1;
         ArrayList<Good> goods= goodDB.getSectionGoods();
         assertEquals(0, goods.size());
     }
@@ -47,5 +49,15 @@ public class GoodDBTest extends AndroidTestCase {
         goodDB.id=101;
         Good good = goodDB.getGood();
         assertNull(good);
+    }
+
+    public void testGetAuthorGoods(){
+        goodDB.author_id=1;
+        ArrayList<Good> goods= goodDB.getAuthorGoods();
+        assertEquals(2, goods.size());
+
+        assertEquals(3, goods.get(0).id);
+        assertEquals(4, goods.get(1).id);
+
     }
 }

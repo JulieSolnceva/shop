@@ -1,8 +1,9 @@
 package julie.study;
 
 import android.test.AndroidTestCase;
-import android.test.RenamingDelegatingContext;
 import android.util.Log;
+
+import julie.study.DBClasses.DB;
 
 /*
 чтобы работали тесты, нужно:

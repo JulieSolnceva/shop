@@ -6,7 +6,6 @@ import android.app.Fragment;
 import android.app.LoaderManager;
 import android.content.Loader;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,14 +15,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
-import julie.study.Good;
-import julie.study.GoodAdapter;
+import julie.study.DataClasses.Good;
+import julie.study.Adapters.GoodAdapter;
 import julie.study.Loaders.SectionLoader;
 import julie.study.R;
-import julie.study.Section;
-import julie.study.SectionItemLoader;
+import julie.study.DataClasses.Section;
+
 
 public class SectionFragment extends Fragment implements LoaderManager.LoaderCallbacks<Object[]> {
     private int id=1;
@@ -62,7 +60,7 @@ public class SectionFragment extends Fragment implements LoaderManager.LoaderCal
             id= getArguments().getInt(BUNDLE_CONTENT);
         }
         Bundle bnd = new Bundle();
-        bnd.putInt(SectionItemLoader.ARGS_TITLE, id);
+        bnd.putInt(BUNDLE_CONTENT, id);
         getLoaderManager().initLoader(LOADER_ID, bnd, this);
 
         View view = inflater.inflate(R.layout.section_fragment, null);

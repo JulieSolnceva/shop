@@ -6,13 +6,16 @@ import android.app.Fragment;
 import android.app.LoaderManager;
 import android.content.Loader;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import julie.study.Good;
+import julie.study.DataClasses.Good;
 import julie.study.Loaders.GoodLoader;
 import julie.study.R;
 
@@ -26,7 +29,7 @@ public class GoodFragment extends Fragment implements LoaderManager.LoaderCallba
     private Good good;
 
     public interface onGoodClickListener {
-        public void openAuthorActivity(int id);
+        public void showAuthorFragment(int id);
     }
 
     onGoodClickListener clickListener;
@@ -108,8 +111,8 @@ public class GoodFragment extends Fragment implements LoaderManager.LoaderCallba
     }
 
     private void drawGood(){
-        TextView txt_price,txt_title,txt_author, txt_publish, txt_year_publish, txt_pages,txt_about;
-        LinearLayout str_author, str_publish, str_year_publish, str_pages;
+        TextView txt_price,txt_title,txt_author, txt_publish, txt_publish_year, txt_pages,txt_about;
+        LinearLayout str_author, str_publish, str_publish_year, str_pages;
 
         txt_price= (TextView)view.findViewById(R.id.price);
         txt_title=(TextView)view.findViewById(R.id.title);
@@ -117,8 +120,8 @@ public class GoodFragment extends Fragment implements LoaderManager.LoaderCallba
         str_author=(LinearLayout) view.findViewById(R.id.str_author);
         str_publish=(LinearLayout)view.findViewById(R.id.str_publish);
         txt_publish=(TextView)view.findViewById(R.id.publish);
-        str_year_publish=(LinearLayout)view.findViewById(R.id.str_year_publish);
-        txt_year_publish=(TextView)view.findViewById(R.id.year_publish);
+        str_publish_year=(LinearLayout)view.findViewById(R.id.str_publish_year);
+        txt_publish_year=(TextView)view.findViewById(R.id.publish_year);
         str_pages=(LinearLayout)view.findViewById(R.id.str_pages);
         txt_pages=(TextView)view.findViewById(R.id.pages);
         txt_about=   (TextView)view.findViewById(R.id.about);
@@ -129,11 +132,18 @@ public class GoodFragment extends Fragment implements LoaderManager.LoaderCallba
 
         if(good.author!=null) {
             str_author.setVisibility(View.VISIBLE);
-            txt_author.setText(good.author);
+          //  txt_author.setText(good.author);
+
+
+            SpannableString ss=new SpannableString(good.author);
+            ss.setSpan(new UnderlineSpan(), 0, good.author.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            txt_author.setText(ss);
+
+
             str_author.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    clickListener.openAuthorActivity(good.id_author);
+                    clickListener.showAuthorFragment(good.author_id);
                 }
             });
         }
@@ -141,9 +151,9 @@ public class GoodFragment extends Fragment implements LoaderManager.LoaderCallba
             str_publish.setVisibility(View.VISIBLE);
            txt_publish.setText(good.publish);
         }
-        if(good.year_publish!=0){
-            str_year_publish.setVisibility(View.VISIBLE);
-            txt_year_publish.setText(String.valueOf(good.year_publish));
+        if(good.publish_year!=0){
+            str_publish_year.setVisibility(View.VISIBLE);
+            txt_publish_year.setText(String.valueOf(good.publish_year));
         }
         if(good.pages!=0){
 

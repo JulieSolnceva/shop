@@ -33,4 +33,6 @@
          <item name="android:textStyle">bold</item>
         <item name="android:layout_marginLeft">@dimen/window_padding</item>
     </style>
+
+
 </resources>

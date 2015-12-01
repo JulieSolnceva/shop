@@ -21,7 +21,7 @@
     <string name="drawer_close">закрывается меню</string>
 
     <string name="txt_publish">Издательство:</string>
-    <string name="txt_year_publish">Год издания:</string>
+    <string name="txt_publish_year">Год издания:</string>
     <string name="txt_pages">Страниц:</string>
     <string name="data_loading">Загрузка данных</string>
 

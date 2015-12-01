@@ -9,13 +9,13 @@ import android.os.Bundle;
 import android.util.Log;
 
 import julie.study.R;
-import julie.study.SectionDB;
+import julie.study.DBClasses.SectionDB;
 
 public class LeftMenuLoader extends AsyncTaskLoader<Object[]> {
 
     int section_id;
     Context context;
-    public final static String ARGS_TITLE = "section_id";
+    public final static String ARGS_TITLE = "author_id";
 
     public LeftMenuLoader(Context context, Bundle args) {
         super(context);
@@ -34,7 +34,7 @@ public class LeftMenuLoader extends AsyncTaskLoader<Object[]> {
 
         try {
             SectionDB sectionDB = new SectionDB(context);
-            sectionDB.getDBConnect();
+           // sectionDB.getDBConnect();
             sectionDB.getSectionDataForSimpleExpandableListAdapter();
             sectionDB.closeDBConnect();
             groupData=sectionDB.groupData;

@@ -6,11 +6,11 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 
-import julie.study.Good;
-import julie.study.GoodDB;
+import julie.study.DataClasses.Good;
+import julie.study.DBClasses.GoodDB;
 import julie.study.R;
-import julie.study.Section;
-import julie.study.SectionDB;
+import julie.study.DataClasses.Section;
+import julie.study.DBClasses.SectionDB;
 
 public class SectionLoader extends AsyncTaskLoader<Object[]> {
 
@@ -36,20 +36,19 @@ public class SectionLoader extends AsyncTaskLoader<Object[]> {
 
         try {
             SectionDB sectionDB = new SectionDB(context);
-            sectionDB.getDBConnect();
             GoodDB goodDB =new GoodDB(context);
-            goodDB.getDBConnect();
 
             childData=sectionDB.getChildren(section_id);
             sectionDB.id=section_id;
             section=sectionDB.init();
-            goodDB.id_section=section_id;
-            goodData= goodDB.getSectionGoods();
 
+            goodDB.section_id=section_id;
+            goodData= goodDB.getSectionGoods();
             sectionDB.closeDBConnect();
             goodDB.closeDBConnect();
 
         } catch (Exception e) {
+            Log.d("Loader", "SectionLoader "+e.getMessage());
             return null;
         }
         Object rezult[]={childData, goodData, section};

@@ -1,11 +1,9 @@
 package julie.study;
 
-import android.content.Context;
-import android.database.sqlite.SQLiteException;
 import android.test.AndroidTestCase;
 import android.util.Log;
 
-import junit.framework.TestCase;
+import julie.study.DBClasses.DBHelper;
 
 /*
 чтобы работали тесты, нужно:

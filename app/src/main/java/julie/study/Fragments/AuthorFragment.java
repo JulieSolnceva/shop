@@ -1,4 +1,3 @@
-
 package julie.study.Fragments;
 
         import android.app.ActionBar;
@@ -7,53 +6,51 @@ package julie.study.Fragments;
         import android.app.LoaderManager;
         import android.content.Loader;
         import android.os.Bundle;
-        import android.util.Log;
         import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
         import android.widget.AdapterView;
-        import android.widget.ArrayAdapter;
+        import android.widget.LinearLayout;
         import android.widget.ListView;
         import android.widget.TextView;
 
         import java.util.ArrayList;
-        import julie.study.Good;
-        import julie.study.GoodAdapter;
-        import julie.study.Loaders.SectionLoader;
-        import julie.study.R;
-        import julie.study.Section;
-        import julie.study.SectionItemLoader;
 
-public class AuthorFragment extends Fragment implements LoaderManager.LoaderCallbacks<Object[]> {
+        import julie.study.Adapters.GoodAdapter;
+        import julie.study.DataClasses.Author;
+        import julie.study.DataClasses.Good;
+        import julie.study.Loaders.AuthorLoader;
+        import julie.study.R;
+
+
+public class AuthorFragment extends Fragment implements LoaderManager.LoaderCallbacks<Object[]>  {
     private int id=1;
     Author author;
     ArrayList<Good> goodData=null;
-    ListView sectionList;
-    ListView goodList;
+    View view;
     TextView messageTxt;
-    Section section;
+    Good good;
 
-    public static final String BUNDLE_CONTENT = "section_id";
-    static final int LOADER_ID = 2;
+
+    public static final String BUNDLE_CONTENT = "author_id";
+    static final int LOADER_ID = 3;
     final String LOG_TAG = "states";
 
-    public interface onSectionClickListener {
-        public void showSectionFragment(int id);
-        public void showGoodFragment(int id);
+    public interface onAuthorClickListener {
+       public void showGoodFragment(int id);
     }
 
-    onSectionClickListener sectionClickListener;
+    onAuthorClickListener authorClickListener;
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         try {
-            sectionClickListener = (onSectionClickListener) activity;
+            authorClickListener = (onAuthorClickListener) activity;
         } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString() + " must implement onSectionClickListener");
+            throw new ClassCastException(activity.toString() + " must implement onAuthorClickListener");
         }
     }
-
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -61,17 +58,14 @@ public class AuthorFragment extends Fragment implements LoaderManager.LoaderCall
             id= getArguments().getInt(BUNDLE_CONTENT);
         }
         Bundle bnd = new Bundle();
-        bnd.putInt(SectionItemLoader.ARGS_TITLE, id);
+        bnd.putInt(BUNDLE_CONTENT, id);
         getLoaderManager().initLoader(LOADER_ID, bnd, this);
 
-        View view = inflater.inflate(R.layout.section_fragment, null);
-        sectionList= (ListView) view.findViewById(R.id.sections);
-        goodList= (ListView) view.findViewById(R.id.goods);
+        view = inflater.inflate(R.layout.author_fragment, null);
         messageTxt =(TextView)view.findViewById(R.id.message);
-
         setRetainInstance(true);
 
-        if(childData==null) {
+        if(goodData==null) {
             Loader<Object[]> loader;
             loader = getLoaderManager().getLoader(LOADER_ID);
             messageTxt.setVisibility(View.VISIBLE);
@@ -79,19 +73,18 @@ public class AuthorFragment extends Fragment implements LoaderManager.LoaderCall
         }
         else{
             setActionBarTitle();
-            drawChildList();
+            drawAuthorInformation();
             drawGoodsList();
         }
 
         return view ;
     }
 
-
     @Override
     public Loader<Object[]> onCreateLoader(int id, Bundle args) {
         Loader<Object[]> loader = null;
         if (id == LOADER_ID) {
-            loader = new SectionLoader(getActivity(), args);
+            loader = new AuthorLoader(getActivity(), args);
         }
         return loader;
     }
@@ -105,12 +98,11 @@ public class AuthorFragment extends Fragment implements LoaderManager.LoaderCall
         messageTxt.setVisibility(View.GONE);
 
         if(result!=null) {
-            childData=(ArrayList<Section>)result[0];
-            goodData=(ArrayList<Good>)result[1];
-            section=(Section) result[2];
+            goodData=(ArrayList<Good>)result[0];
+            author=(Author) result[1];
 
             setActionBarTitle();
-            drawChildList();
+            drawAuthorInformation();
             drawGoodsList();
         }
         else showErrorMessage();
@@ -122,45 +114,52 @@ public class AuthorFragment extends Fragment implements LoaderManager.LoaderCall
     }
 
     private void setActionBarTitle() {
-        if(section.title==null){
+        if(author.title==null){
             showErrorMessage();
             return;
         }
         ActionBar actionBar = getActivity().getActionBar();
-        actionBar.setTitle(section.title);
+        actionBar.setTitle(author.title);
     }
 
-    private void drawChildList(){
-        ArrayList<String> title =new ArrayList<String>();
-        for(Section sectionTmp: childData){
-            title.add(sectionTmp.title);
-        }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_list_item_1, title);
-        sectionList.setAdapter(adapter);
-
-        sectionList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-                sectionClickListener.showSectionFragment(childData.get(position).id);
-            }
-        });
-
-    }
 
 
     private void drawGoodsList(){
         GoodAdapter adapter = new GoodAdapter(getActivity(), goodData);
-        goodList.setAdapter(adapter);
 
+       // goodList.setAdapter(adapter);
+
+
+        LinearLayout listViewReplacement = (LinearLayout) view.findViewById(R.id.goods);
+        listViewReplacement.removeAllViews();
+        for (int i = 0; i < adapter.getCount(); i++) {
+            View view = adapter.getView(i, null, listViewReplacement);
+            good=adapter.getGood(i);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    authorClickListener.showGoodFragment(good.id);
+                }
+            });
+            listViewReplacement.addView(view);
+        }
+
+
+
+
+/*
         goodList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-                sectionClickListener.showGoodFragment(goodData.get(position).id);
+                authorClickListener.showGoodFragment(goodData.get(position).id);
             }
-        });
+        });*/
     }
 
-
+    private void drawAuthorInformation(){
+        ((TextView) view.findViewById(R.id.title)).setText(author.title);
+        ((TextView) view.findViewById(R.id.about)).setText(author.about);
+    }
 
 }
 

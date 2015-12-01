@@ -19,7 +19,6 @@ public class UpdateController {
 
 
 
-
     public void checkStartUpdate(Context context){
         checkTimeToUpdate();
         if(timeToUpdate) {

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import julie.study.R;
-import julie.study.SectionDB;
+import julie.study.DBClasses.SectionDB;
 
 
 public class MainActivity extends Activity {
@@ -92,7 +92,7 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
-
+// todo ПЕРЕДЕЛАТЬ ПОД LOADER !!!!!!!!!!!!!
 
     class DataBaseTask extends AsyncTask<Void, Void, Void> {
 
@@ -108,7 +108,7 @@ public class MainActivity extends Activity {
         protected Void doInBackground(Void... params) {
             try{
                 SectionDB sectionDB = new SectionDB(MainActivity.this);
-                sectionDB.getDBConnect();
+              //  sectionDB.getDBConnect();
                 sectionDB.getSectionDataForSimpleExpandableListAdapter();
                 sectionDB.closeDBConnect();
                 taskGroupData=sectionDB.groupData;
