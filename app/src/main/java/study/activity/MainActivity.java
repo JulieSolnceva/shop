@@ -1,4 +1,4 @@
-package julie.study.activity;
+package study.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import julie.study.R;
-import julie.study.DBClasses.SectionDB;
+import study.DBClasses.SectionDB;
 
 
 public class MainActivity extends Activity {

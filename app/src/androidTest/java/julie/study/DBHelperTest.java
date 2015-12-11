@@ -3,7 +3,7 @@ package julie.study;
 import android.test.AndroidTestCase;
 import android.util.Log;
 
-import julie.study.DBClasses.DBHelper;
+import study.DBClasses.DBHelper;
 
 /*
 чтобы работали тесты, нужно:

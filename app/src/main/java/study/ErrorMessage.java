@@ -1,4 +1,4 @@
-package julie.study;
+package study;
 
 
 public class ErrorMessage {

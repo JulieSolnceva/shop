@@ -1,15 +1,24 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.0"
+    //compileSdkVersion 22
+    //buildToolsVersion "22.0.0"
+
+    compileSdkVersion 23
+    buildToolsVersion '23.0.1'
 
     defaultConfig {
         applicationId "julie.study"
-        minSdkVersion 15
-        targetSdkVersion 22
+
+        //minSdkVersion 15
+        //targetSdkVersion 22
+
+        minSdkVersion 10
+        targetSdkVersion 23
+
         versionCode 1
         versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -21,13 +30,32 @@ android {
     testOptions {
         unitTests.returnDefaultValues = true
     }
+
+    packagingOptions {
+        exclude 'LICENSE.txt'
+    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:22.0.0'
-    testCompile 'junit:junit:4.12'
-    testCompile 'org.mockito:mockito-core:1.10.19'
+    // App dependencies
+    compile 'com.android.support:support-annotations:23.0.1'
+    // Testing-only dependencies
+    // Force usage of support annotations in the test app, since it is internally used by the runner module.
+    androidTestCompile 'com.android.support:support-annotations:23.0.1'
+    androidTestCompile 'com.android.support.test:runner:0.4.1'
+    androidTestCompile 'com.android.support.test:rules:0.4.1'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.1'
+    androidTestCompile 'com.android.support.test.espresso:espresso-intents:2.2.1'
+    /*
+        compile fileTree(dir: 'libs', include: ['*.jar'])
+        compile 'com.android.support:appcompat-v7:22.0.0' //← MAKE SURE IT’S 22.0.0
+        testCompile 'junit:junit:4.12'
+
+        androidTestCompile 'com.android.support.test:runner:0.2'
+        androidTestCompile 'com.android.support.test:rules:0.2'
+        androidTestCompile 'com.android.support.test.espresso:espresso-core:2.1'*/
+    compile 'com.android.support:support-v4:23.0.1'
+    compile 'com.android.support:appcompat-v7:23.0.1'
 }
 
 sourceSets {

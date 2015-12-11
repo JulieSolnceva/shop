@@ -1,4 +1,4 @@
-package julie.study.Fragments;
+package study.Fragments;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -15,8 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import julie.study.DataClasses.Good;
-import julie.study.Loaders.GoodLoader;
+import study.DataClasses.Good;
+import study.Loaders.GoodLoader;
 import julie.study.R;
 
 public class GoodFragment extends Fragment implements LoaderManager.LoaderCallbacks<Good>{

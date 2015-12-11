@@ -1,13 +1,13 @@
-package julie.study.Loaders;
+package study.Loaders;
 
         import android.content.AsyncTaskLoader;
         import android.content.Context;
         import android.os.Bundle;
         import android.util.Log;
 
-        import julie.study.DataClasses.Good;
-        import julie.study.DBClasses.GoodDB;
-        import julie.study.DataClasses.Section;
+        import study.DataClasses.Good;
+        import study.DBClasses.GoodDB;
+        import study.DataClasses.Section;
 
 public class GoodLoader extends AsyncTaskLoader<Good> {
 

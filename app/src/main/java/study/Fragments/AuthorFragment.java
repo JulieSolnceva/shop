@@ -1,4 +1,4 @@
-package julie.study.Fragments;
+package study.Fragments;
 
         import android.app.ActionBar;
         import android.app.Activity;
@@ -9,17 +9,15 @@ package julie.study.Fragments;
         import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
-        import android.widget.AdapterView;
         import android.widget.LinearLayout;
-        import android.widget.ListView;
         import android.widget.TextView;
 
         import java.util.ArrayList;
 
-        import julie.study.Adapters.GoodAdapter;
-        import julie.study.DataClasses.Author;
-        import julie.study.DataClasses.Good;
-        import julie.study.Loaders.AuthorLoader;
+        import study.Adapters.GoodAdapter;
+        import study.DataClasses.Author;
+        import study.DataClasses.Good;
+        import study.Loaders.AuthorLoader;
         import julie.study.R;
 
 

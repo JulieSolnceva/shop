@@ -1,10 +1,12 @@
-package julie.study;
+package study;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Environment;
 import android.widget.Toast;
+
+import julie.study.R;
 
 public class UpdateController {
     boolean readyConnection =false;

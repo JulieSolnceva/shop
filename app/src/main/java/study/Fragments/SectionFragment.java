@@ -1,4 +1,4 @@
-package julie.study.Fragments;
+package study.Fragments;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -16,19 +16,18 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import julie.study.DataClasses.Good;
-import julie.study.Adapters.GoodAdapter;
-import julie.study.Loaders.SectionLoader;
+import study.DataClasses.Good;
+import study.Adapters.GoodAdapter;
+import study.Loaders.SectionLoader;
 import julie.study.R;
-import julie.study.DataClasses.Section;
+import study.DataClasses.Section;
 
 
 public class SectionFragment extends Fragment implements LoaderManager.LoaderCallbacks<Object[]> {
     private int id=1;
     ArrayList<Section> childData=null;
     ArrayList<Good> goodData=null;
-    ListView sectionList;
-    ListView goodList;
+    ListView sectionList, goodList;
     TextView messageTxt;
     Section section;
 
@@ -114,6 +113,11 @@ public class SectionFragment extends Fragment implements LoaderManager.LoaderCal
         }
         else showErrorMessage();
     }
+
+
+
+
+
 
     private void showErrorMessage(){
         messageTxt.setText(getString(R.string.db_error_message));

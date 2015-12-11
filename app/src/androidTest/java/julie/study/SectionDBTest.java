@@ -4,8 +4,8 @@ import android.test.AndroidTestCase;
 
 import java.util.ArrayList;
 
-import julie.study.DBClasses.SectionDB;
-import julie.study.DataClasses.Section;
+import study.DBClasses.SectionDB;
+import study.DataClasses.Section;
 
 public class SectionDBTest extends AndroidTestCase {
     public SectionDB sectionDB;

@@ -1,4 +1,4 @@
-package julie.study.activity;
+package study.activity;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
@@ -7,9 +7,9 @@ import android.content.Intent;
 import android.content.Loader;
 import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.DrawerLayout;
-import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,18 +20,17 @@ import android.widget.SimpleExpandableListAdapter;
 import java.util.ArrayList;
 import java.util.Map;
 
-import julie.study.DataClasses.Author;
-import julie.study.DataClasses.DataForLeftMenu;
-import julie.study.ErrorMessage;
-import julie.study.Fragments.AuthorFragment;
-import julie.study.Fragments.GoodFragment;
-import julie.study.Fragments.SectionFragment;
-import julie.study.Loaders.LeftMenuLoader;
 import julie.study.R;
+import study.DataClasses.DataForLeftMenu;
+import study.ErrorMessage;
+import study.Fragments.AuthorFragment;
+import study.Fragments.GoodFragment;
+import study.Fragments.SectionFragment;
+import study.Loaders.LeftMenuLoader;
 
 public class SectionItemActivity extends FragmentActivity
         implements SectionFragment.onSectionClickListener,
-                    GoodFragment.onGoodClickListener,
+        GoodFragment.onGoodClickListener,
                      AuthorFragment.onAuthorClickListener,
                     LoaderManager.LoaderCallbacks<Object[]>{
 

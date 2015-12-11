@@ -1,4 +1,4 @@
-package julie.study.Loaders;
+package study.Loaders;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import julie.study.R;
-import julie.study.DBClasses.SectionDB;
+import study.DBClasses.SectionDB;
 
 public class LeftMenuLoader extends AsyncTaskLoader<Object[]> {
 

@@ -1,16 +1,17 @@
-package julie.study.Loaders;
+package study.Loaders;
 
-import java.util.ArrayList;
 import android.content.AsyncTaskLoader;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 
-import julie.study.DataClasses.Good;
-import julie.study.DBClasses.GoodDB;
+import java.util.ArrayList;
+
 import julie.study.R;
-import julie.study.DataClasses.Section;
-import julie.study.DBClasses.SectionDB;
+import study.DBClasses.GoodDB;
+import study.DBClasses.SectionDB;
+import study.DataClasses.Good;
+import study.DataClasses.Section;
 
 public class SectionLoader extends AsyncTaskLoader<Object[]> {
 
@@ -34,6 +35,7 @@ public class SectionLoader extends AsyncTaskLoader<Object[]> {
         Section section=new Section();
         ArrayList<Good> goodData=new ArrayList<Good>();
 
+
         try {
             SectionDB sectionDB = new SectionDB(context);
             GoodDB goodDB =new GoodDB(context);
@@ -54,5 +56,6 @@ public class SectionLoader extends AsyncTaskLoader<Object[]> {
         Object rezult[]={childData, goodData, section};
         return rezult;
     }
+
 
 }
