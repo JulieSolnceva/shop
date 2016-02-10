@@ -2,17 +2,19 @@ package study.DBClasses;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import java.util.ArrayList;
 
 import study.DataClasses.Good;
 
-public class GoodDB extends DB{
+public class GoodDB{
+    private SQLiteDatabase dbActive;
     public int id, author_id, section_id;
 
-    public GoodDB(Context context) throws Exception{
-        super(context);
+    public GoodDB(Context context)  throws Exception{
+        dbActive=DB.getInstance(context).dbActive;
     }
 
 

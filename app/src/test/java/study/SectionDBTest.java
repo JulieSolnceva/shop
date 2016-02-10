@@ -9,7 +9,7 @@ import study.DataClasses.Section;
 
 public class SectionDBTest extends AndroidTestCase {
     public SectionDB sectionDB;
-    @Override
+      @Override
     protected void setUp() throws Exception {
         super.setUp();
         sectionDB =new SectionDB(getContext());
@@ -18,7 +18,6 @@ public class SectionDBTest extends AndroidTestCase {
 
     public void testInit() {
         sectionDB.id=2;
-        assertTrue(sectionDB.dbActive.isOpen());
         Section section=sectionDB.init();
         assertEquals("книги", section.title);
     }

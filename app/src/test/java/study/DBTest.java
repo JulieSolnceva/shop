@@ -15,12 +15,7 @@ public class DBTest extends AndroidTestCase {
 
 
     public void testGetDBConnect() throws Exception{
-        DB db=new DB(mContext);
-        db.getDBConnect();
-
-        assertTrue(db.dbActive.isOpen());
-
-        db.dbActive.close();
+        assertTrue(DB.getInstance(mContext).dbActive.isOpen());
         Log.d("test","DBTest testGetDBConnect ok");
     }
 

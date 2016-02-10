@@ -1,4 +1,4 @@
-package julie.study;
+package study;
 
 import android.test.AndroidTestCase;
 

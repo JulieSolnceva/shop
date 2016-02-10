@@ -15,6 +15,7 @@ import java.util.Map;
 
 import julie.study.R;
 import study.DBClasses.SectionDB;
+import study.Test;
 
 
 public class MainActivity extends Activity {
@@ -30,7 +31,13 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         DataBaseTask task = new DataBaseTask();
-        task.execute();
+       task.execute();
+
+        int id=getResources().getInteger(R.integer.root_id);
+        Log.d( "onCreate", Integer.toString(id));
+
+        Test.start(this);
+
     }
 
         private void drawList(){
@@ -107,16 +114,21 @@ public class MainActivity extends Activity {
         @Override
         protected Void doInBackground(Void... params) {
             try{
+
                 SectionDB sectionDB = new SectionDB(MainActivity.this);
+
+                Log.d("main  ","sectionDB ");
+
+                int id=getResources().getInteger(R.integer.root_id);
+                Log.d("onCreate3", Integer.toString(id));
               //  sectionDB.getDBConnect();
                 sectionDB.getSectionDataForSimpleExpandableListAdapter();
-                sectionDB.closeDBConnect();
                 taskGroupData=sectionDB.groupData;
                 taskChildData=sectionDB.childData;
             }
             catch (Exception e ) {
                 // todo  здесь нужно сплывающее окно с текстом ошибки
-                Log.d("main  ","подразделов нет ");
+                Log.d("main  ","подразделов нет "+e.getMessage());
 
             }
             return null;
@@ -125,6 +137,8 @@ public class MainActivity extends Activity {
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
+            int id=getResources().getInteger(R.integer.root_id);
+            Log.d("onCreate", Integer.toString(id));
             Log.d("main  ","groupData size= "+taskGroupData.size());
             MainActivity.this.groupData=taskGroupData;
             MainActivity.this.childData=taskChildData;

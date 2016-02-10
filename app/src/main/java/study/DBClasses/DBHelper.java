@@ -9,7 +9,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.sql.SQLException;
 
 /**
  * Created by Andrew on 30.10.2015.
@@ -17,6 +16,7 @@ import java.sql.SQLException;
 public class DBHelper extends SQLiteOpenHelper {
 
     private static final int DB_VERSION = 1;
+    private static final String LOG_TAG="DBHelper";
 
     private String dbFolder;
     public String dbPath;
@@ -32,6 +32,9 @@ public class DBHelper extends SQLiteOpenHelper {
         dbFolder= "/data/data/" + context.getPackageName() + "/databases/";
         dbPath=dbFolder+ dbName;
     }
+
+
+
 
 
     /**
@@ -54,7 +57,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private void copyDataBase() throws Exception{
           //Открываем локальную БД как входящий поток
-            InputStream myInput = context.getAssets().open( dbName);
+            InputStream myInput = context.getAssets().open(dbName);
 
             //вызывая этот метод создаем пустую базу, позже она будет перезаписана
             this.getReadableDatabase();

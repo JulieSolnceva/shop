@@ -9,7 +9,8 @@
 
     <string name="db_name">bookShop</string>
     <string name="db_path">/data/data/julie.study.app/databases/</string>
-    <string name="db_mode">develop</string> <!-- работа с тестовой БД = test -->
+    <string name="db_mode">develop</string>
+    <!-- работа с тестовой БД = test -->
   <!--  <string name="db_mode">develop</string>  db adapter for development -> работа с боевой БД  -->
 
     <string name="db_error_message">В приложении произошла ошибка при обращении к базе данных!</string>

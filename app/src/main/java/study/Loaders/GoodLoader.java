@@ -33,8 +33,6 @@ public class GoodLoader extends AsyncTaskLoader<Good> {
             //goodDB.getDBConnect();
             goodDB.id=id;
             good=goodDB.getGood();
-            goodDB.closeDBConnect();
-
         } catch (Exception e) {
             return null;
         }

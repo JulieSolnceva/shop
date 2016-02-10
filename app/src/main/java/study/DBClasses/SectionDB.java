@@ -2,23 +2,25 @@ package study.DBClasses;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import study.DataClasses.Section;
 import julie.study.R;
+import study.DataClasses.Section;
 
-public class SectionDB extends DB {
+public class SectionDB {
     public int id;
     Context context;
     public ArrayList<Map<String, String>> groupData;
     public ArrayList<ArrayList<Map<String, String>>> childData;
+    private SQLiteDatabase dbActive;
 
-
-    public SectionDB(Context context) throws Exception{
-        super(context);
+    public SectionDB(Context context)  throws Exception{
+        dbActive=DB.getInstance(context).dbActive;
         this.context=context;
     }
 
@@ -39,6 +41,8 @@ public class SectionDB extends DB {
 
    public ArrayList<Section> getChildren(int _id)
    {
+
+       Log.d("SectionDB", "getChildren0 "+_id);
        ArrayList<Section> children=new ArrayList<Section>();
        String sql="select c.title, c._id, count(t._id) as x "+
 			"from  section as p, section as c, section as t "+
@@ -49,8 +53,13 @@ public class SectionDB extends DB {
 			"group by c._id having x=1 "+
 			"order by c.left_id";
 
+       Log.d("SectionDB", sql);
+
+       Log.d("SectionDB", "getChildren");
 
        Cursor cursor = dbActive.rawQuery(sql, null);
+
+       Log.d("SectionDB  ", "getChildren1");
 
       if (cursor.moveToFirst()) {
            do {
@@ -90,7 +99,7 @@ public class SectionDB extends DB {
     }
 
 
-    public void getSectionDataForSimpleExpandableListAdapter() throws Exception {
+    public void getSectionDataForSimpleExpandableListAdapter ()  throws Exception {
         ArrayList<Section> children = getChildren(context.getResources().getInteger(R.integer.root_id));
         if (children.size() == 0) throw new Exception();
 

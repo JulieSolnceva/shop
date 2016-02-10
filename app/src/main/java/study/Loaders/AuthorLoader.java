@@ -43,9 +43,6 @@ public class AuthorLoader extends AsyncTaskLoader<Object[]> {
             author=authorDB.init();
             goodDB.author_id= author_id;
             goodData= goodDB.getAuthorGoods();
-
-            authorDB.closeDBConnect();
-            goodDB.closeDBConnect();
         } catch (Exception e) {
             return null;
         }

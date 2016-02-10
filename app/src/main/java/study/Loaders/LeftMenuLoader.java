@@ -1,12 +1,12 @@
 package study.Loaders;
 
-import java.util.ArrayList;
-import java.util.Map;
-
 import android.content.AsyncTaskLoader;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.Map;
 
 import julie.study.R;
 import study.DBClasses.SectionDB;
@@ -36,7 +36,6 @@ public class LeftMenuLoader extends AsyncTaskLoader<Object[]> {
             SectionDB sectionDB = new SectionDB(context);
            // sectionDB.getDBConnect();
             sectionDB.getSectionDataForSimpleExpandableListAdapter();
-            sectionDB.closeDBConnect();
             groupData=sectionDB.groupData;
             childData=sectionDB.childData;
         }

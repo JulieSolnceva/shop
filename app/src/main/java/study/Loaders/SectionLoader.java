@@ -46,9 +46,6 @@ public class SectionLoader extends AsyncTaskLoader<Object[]> {
 
             goodDB.section_id=section_id;
             goodData= goodDB.getSectionGoods();
-            sectionDB.closeDBConnect();
-            goodDB.closeDBConnect();
-
         } catch (Exception e) {
             Log.d("Loader", "SectionLoader "+e.getMessage());
             return null;

@@ -67,6 +67,18 @@ public class SectionFragment extends Fragment implements LoaderManager.LoaderCal
         goodList= (ListView) view.findViewById(R.id.goods);
         messageTxt =(TextView)view.findViewById(R.id.message);
 
+        goodList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+                sectionClickListener.showGoodFragment(goodData.get(position).id);
+            }
+        });
+
+        sectionList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+                sectionClickListener.showSectionFragment(childData.get(position).id);
+            }
+        });
+
         setRetainInstance(true);
 
         if(childData==null) {
@@ -143,11 +155,7 @@ public class SectionFragment extends Fragment implements LoaderManager.LoaderCal
                 android.R.layout.simple_list_item_1, title);
         sectionList.setAdapter(adapter);
 
-        sectionList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-                sectionClickListener.showSectionFragment(childData.get(position).id);
-            }
-        });
+
 
     }
 
@@ -156,11 +164,7 @@ public class SectionFragment extends Fragment implements LoaderManager.LoaderCal
         GoodAdapter adapter = new GoodAdapter(getActivity(), goodData);
         goodList.setAdapter(adapter);
 
-        goodList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-               sectionClickListener.showGoodFragment(goodData.get(position).id);
-            }
-        });
+
     }
 
 
