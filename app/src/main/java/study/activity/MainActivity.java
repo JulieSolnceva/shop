@@ -20,7 +20,6 @@ import study.Test;
 
 public class MainActivity extends Activity {
 
-
     ArrayList<Map<String, String>> groupData;
     ArrayList<ArrayList<Map<String, String>>> childData;
     ExpandableListView elvMain;
@@ -114,14 +113,8 @@ public class MainActivity extends Activity {
         @Override
         protected Void doInBackground(Void... params) {
             try{
-
                 SectionDB sectionDB = new SectionDB(MainActivity.this);
-
-                Log.d("main  ","sectionDB ");
-
                 int id=getResources().getInteger(R.integer.root_id);
-                Log.d("onCreate3", Integer.toString(id));
-              //  sectionDB.getDBConnect();
                 sectionDB.getSectionDataForSimpleExpandableListAdapter();
                 taskGroupData=sectionDB.groupData;
                 taskChildData=sectionDB.childData;
@@ -129,7 +122,6 @@ public class MainActivity extends Activity {
             catch (Exception e ) {
                 // todo  здесь нужно сплывающее окно с текстом ошибки
                 Log.d("main  ","подразделов нет "+e.getMessage());
-
             }
             return null;
         }
@@ -138,14 +130,10 @@ public class MainActivity extends Activity {
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
             int id=getResources().getInteger(R.integer.root_id);
-            Log.d("onCreate", Integer.toString(id));
-            Log.d("main  ","groupData size= "+taskGroupData.size());
             MainActivity.this.groupData=taskGroupData;
             MainActivity.this.childData=taskChildData;
             MainActivity.this.drawList();
          }
-
-
     }
 
 

@@ -74,5 +74,4 @@ public class GoodAdapter extends BaseAdapter  {
         return ((Good) getItem(position));
     }
 
-
 }

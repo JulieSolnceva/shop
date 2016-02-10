@@ -92,7 +92,6 @@ public class SectionFragment extends Fragment implements LoaderManager.LoaderCal
             drawChildList();
             drawGoodsList();
         }
-
         return view ;
     }
 
@@ -129,8 +128,6 @@ public class SectionFragment extends Fragment implements LoaderManager.LoaderCal
 
 
 
-
-
     private void showErrorMessage(){
         messageTxt.setText(getString(R.string.db_error_message));
         messageTxt.setVisibility(View.VISIBLE);
@@ -154,19 +151,11 @@ public class SectionFragment extends Fragment implements LoaderManager.LoaderCal
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1, title);
         sectionList.setAdapter(adapter);
-
-
-
     }
 
 
     private void drawGoodsList(){
         GoodAdapter adapter = new GoodAdapter(getActivity(), goodData);
         goodList.setAdapter(adapter);
-
-
     }
-
-
-
 }

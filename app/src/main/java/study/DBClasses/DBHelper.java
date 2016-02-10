@@ -34,9 +34,6 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-
-
-
     /**
      * Создает пустую базу данных и перезаписывает ее нашей собственной базой
      * */
@@ -77,9 +74,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public void openDataBase() throws SQLiteException {
-
            myDataBase = SQLiteDatabase.openDatabase(dbPath, null, SQLiteDatabase.OPEN_READWRITE);
-
     }
 
     @Override

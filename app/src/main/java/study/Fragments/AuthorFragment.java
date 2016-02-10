@@ -125,11 +125,7 @@ public class AuthorFragment extends Fragment implements LoaderManager.LoaderCall
 
     private void drawGoodsList(){
         GoodAdapter adapter = new GoodAdapter(getActivity(), goodData);
-
-       // goodList.setAdapter(adapter);
-
-
-        LinearLayout listViewReplacement = (LinearLayout) view.findViewById(R.id.goods);
+       LinearLayout listViewReplacement = (LinearLayout) view.findViewById(R.id.goods);
         listViewReplacement.removeAllViews();
         for (int i = 0; i < adapter.getCount(); i++) {
             View view = adapter.getView(i, null, listViewReplacement);
@@ -142,16 +138,6 @@ public class AuthorFragment extends Fragment implements LoaderManager.LoaderCall
             });
             listViewReplacement.addView(view);
         }
-
-
-
-
-/*
-        goodList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-                authorClickListener.showGoodFragment(goodData.get(position).id);
-            }
-        });*/
     }
 
     private void drawAuthorInformation(){

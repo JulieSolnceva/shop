@@ -132,14 +132,9 @@ public class GoodFragment extends Fragment implements LoaderManager.LoaderCallba
 
         if(good.author!=null) {
             str_author.setVisibility(View.VISIBLE);
-          //  txt_author.setText(good.author);
-
-
             SpannableString ss=new SpannableString(good.author);
             ss.setSpan(new UnderlineSpan(), 0, good.author.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             txt_author.setText(ss);
-
-
             str_author.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -156,8 +151,6 @@ public class GoodFragment extends Fragment implements LoaderManager.LoaderCallba
             txt_publish_year.setText(String.valueOf(good.publish_year));
         }
         if(good.pages!=0){
-
-            Log.d("GoodFragment", "good.pages= " + good.pages);
             str_pages.setVisibility(View.VISIBLE);
             txt_pages.setText(String.valueOf(good.pages));
         }

@@ -53,15 +53,8 @@ public class SectionDB {
 			"group by c._id having x=1 "+
 			"order by c.left_id";
 
-       Log.d("SectionDB", sql);
-
-       Log.d("SectionDB", "getChildren");
-
        Cursor cursor = dbActive.rawQuery(sql, null);
-
-       Log.d("SectionDB  ", "getChildren1");
-
-      if (cursor.moveToFirst()) {
+       if (cursor.moveToFirst()) {
            do {
                Section section=new Section();
                section.title=cursor.getString(0);
@@ -108,7 +101,6 @@ public class SectionDB {
         // создаем коллекцию для коллекций элементов
         childData = new ArrayList<ArrayList<Map<String, String>>>();
 
-
         for (Section group : children) {
             HashMap<String, String> hash = new HashMap<String, String>();
             hash.put("title", group.title);
@@ -124,7 +116,6 @@ public class SectionDB {
                 sub.put("id", String.valueOf(childItem.id));
                 childDataItem.add(sub);
             }
-
             childData.add(childDataItem);
         }
     }

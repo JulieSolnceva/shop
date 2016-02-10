@@ -25,7 +25,6 @@ public class GoodDB{
                 "from good as g " +
                 "left join author as a on a._id=g.author_id " +
                 "where g.section_id="+this.section_id+" order by g.title";
-        Log.d("GoodDB", sql);
         Cursor cursor = dbActive.rawQuery(sql, null);
 
         if (cursor.moveToFirst()) {
@@ -39,8 +38,6 @@ public class GoodDB{
             } while (cursor.moveToNext());
         }
         cursor.close();
-
-        Log.d("GoodDB", "goods.size()="+goods.size());
         return goods;
     }
 
@@ -50,7 +47,6 @@ public class GoodDB{
                 "from good as g " +
                 "left join author as a on a._id=g.author_id " +
                 "where g.author_id="+this.author_id+" order by g.title";
-        Log.d("GoodDB", sql);
         Cursor cursor = dbActive.rawQuery(sql, null);
 
         if (cursor.moveToFirst()) {
@@ -64,8 +60,6 @@ public class GoodDB{
             } while (cursor.moveToNext());
         }
         cursor.close();
-
-        Log.d("GoodDB", "goods.size()="+goods.size());
         return goods;
     }
 
